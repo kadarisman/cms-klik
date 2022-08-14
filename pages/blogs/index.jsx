@@ -23,7 +23,7 @@ const Blogs = ({data}) => {
         <>
             <div className={styles.App}>
                 <div className={styles.article}>
-                    <h1 className={styles.judul}>Wlcome my blog</h1>
+                    <h1 className={styles.judul}>Welcome my blog</h1>
                     <h3 className={styles.jumlah}>Jumlah Post : {jumlahPost}</h3>
                     <div className={styles.post}>
                         {blogs.map((b, index) => (
