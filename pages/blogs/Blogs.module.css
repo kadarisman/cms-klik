@@ -1,0 +1,32 @@
+.App {
+    display: flex;
+    padding-top:20px;
+  }
+  .article{
+    margin: auto;
+  }
+  .box{
+    border: 3px solid green;
+    margin-bottom: 5px;
+    padding: 12px;
+    width: 30%;
+  }
+  .judul{
+    text-align: center;
+  }
+  .btn{
+    margin-right: 5px;
+  }
+  .jumlah{
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .post{
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+    gap: 3px;
+    
+  }
