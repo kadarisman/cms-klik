@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
-import styles from './Blogs.module.css'
 import Link from 'next/link'
-const Blogs = ({data}) => {
+import Layout from "@/layouts/Layout"
+import Blog from "@/components/Blog"
+const Blogs = ({ data }) => {
     const [blogs, setBlogs] = useState([]);
     useEffect(() => {
         (async () => {
@@ -11,35 +12,32 @@ const Blogs = ({data}) => {
         })()
 
     }, [])
-    const deletePost = (e)=>{
+    const deletePost = (id) => {
         const confirmDelete = confirm("yakin mau hapus ?");
         if (confirmDelete) {
-            const newBlogs = blogs.filter(b => b.id != e.target.id)
+            const newBlogs = blogs.filter(b => b.id != id)
             setBlogs(newBlogs)
-        }    
+        }
     }
     const jumlahPost = blogs.length
     return (
         <>
-            <div className={styles.App}>
-                <div className={styles.article}>
-                    <h1 className={styles.judul}>Welcome my blog</h1>
-                    <h3 className={styles.jumlah}>Jumlah Post : {jumlahPost}</h3>
-                    <div className={styles.post}>
-                        {blogs.map((b, index) => (
-                            <article className={styles.box} key={b.id}>
-                                <h1>{b.title}</h1>
-                                <h1>No : {index + 1}</h1>
-                                <p>{b.body}</p>
-                                <Link href={`blogs/${b.id}`}>
-                                    <button className={styles.btn}>Detail</button>
-                                </Link>
-                                <button className={styles.btn} onClick={(e)=>deletePost(e)} id={b.id}>Hapus</button>
-                            </article>
+            <Layout>
+                <section className="bg-white border-b py-8">
+                    <div className="container mx-auto flex flex-wrap pt-4 pb-8">
+                        <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800 pt-12">
+                            Article {jumlahPost}
+                        </h2>
+                        <div className="w-full mb-4">
+                            <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+                        </div>
+                        {blogs.map((item, index) => (
+                            <Blog post={item} index={index} deletePost={deletePost} />
                         ))}
+
                     </div>
-                </div>
-            </div>
+                </section>
+            </Layout>
         </>
     )
 }
