@@ -32,7 +32,7 @@ const Blogs = ({ data }) => {
                             <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
                         </div>
                         {blogs.map((item, index) => (
-                            <Blog post={item} index={index} deletePost={deletePost} />
+                            <Blog post={item} index={index} deletePost={deletePost} key={item.id}/>
                         ))}
 
                     </div>

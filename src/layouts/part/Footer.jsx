@@ -6,7 +6,7 @@ const Footer = () => {
             <div className="w-full flex flex-col md:flex-row py-6">
                 <div className="flex-1 mb-6 text-black">
                     <Link href={'/'}>
-                        <a class="text-pink-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+                        <a className="text-pink-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
                             <svg className="h-8 fill-current inline mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.005 512.005">
                                 <rect fill="#2a2a31" x="16.539" y="425.626" width="479.767" height="50.502" transform="matrix(1,0,0,1,0,0)" />
                                 <path

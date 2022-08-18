@@ -5,7 +5,7 @@ const Navbar = () => {
             <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
                 <div className="pl-4 flex items-center">
                     <Link href={'/'}>
-                        <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+                        <a className="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
                             <svg className="h-8 fill-current inline mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.005 512.005">
                                 <rect fill="#2a2a31" x="16.539" y="425.626" width="479.767" height="50.502" transform="matrix(1,0,0,1,0,0)" />
                                 <path
@@ -29,7 +29,7 @@ const Navbar = () => {
                     <ul className="list-reset lg:flex justify-end flex-1 items-center">
                         <li className="mr-3">
                             <Link href={'/blogs'}>
-                                <a class="inline-block py-2 px-4 text-black font-bold no-underline text-xl" href="#">Articles</a>
+                                <a className="inline-block py-2 px-4 text-black font-bold no-underline text-xl" href="#">Articles</a>
                             </Link>
                         </li>
                         <li className="mr-3">

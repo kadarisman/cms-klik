@@ -1,3 +1,4 @@
+import Image from "next/image"
 const Hero = () => {
     return (
         <div className="pt-24">
@@ -15,7 +16,7 @@ const Hero = () => {
                     </button>
                 </div>
                 <div className="w-full md:w-3/5 py-6 text-center">
-                    <img class="w-full md:w-4/5 z-50" src="https://raw.githubusercontent.com/tailwindtoolbox/Landing-Page/master/hero.png" />
+                    <Image className="w-full md:w-4/5 z-50" src="https://raw.githubusercontent.com/tailwindtoolbox/Landing-Page/master/hero.png" alt="image"/>
                 </div>
             </div>
         </div>
