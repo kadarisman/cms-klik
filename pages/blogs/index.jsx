@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react"
 import Link from 'next/link'
 import Layout from "@/layouts/Layout"
-import Blog from "@/components/Blog"
+import Blog from "@/components/blog/Blog"
+import Form from "@/components/blog/Form"
 const Blogs = ({ data }) => {
     const [blogs, setBlogs] = useState([]);
+    const [blogById, setblogById] = useState({});
+    const [blogOfIndex, setblogOfIndex] = useState([]);
     useEffect(() => {
         (async () => {
             // const get = await fetch('https://jsonplaceholder.typicode.com/posts')
             // const data = await get.json();
             setBlogs(data)
+            // editPost();
         })()
 
     }, [])
@@ -19,20 +23,32 @@ const Blogs = ({ data }) => {
             setBlogs(newBlogs)
         }
     }
+    const editPost = (id) => {       
+        const result = blogs.find(b => b.id == id)
+        //const resultOfIndex = blogs.findIndex(b => b.id == id)
+        setblogById(result)        
+        // console.log(blogById)
+        //setblogOfIndex(resultOfIndex)
+    }
+
+    // const savePost = () => {
+    //     
+    // }
     const jumlahPost = blogs.length
     return (
         <>
-            <Layout>
+            <Layout>          
                 <section className="bg-white border-b py-8">
-                    <div className="container mx-auto flex flex-wrap pt-4 pb-8">
-                        <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800 pt-12">
+                    <Form blogs={blogs} setBlogs={setBlogs} blogById={blogById} />
+                    <div className="container mx-auto flex flex-wrap pb-8">
+                        <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800 pt-5">
                             Article {jumlahPost}
                         </h2>
                         <div className="w-full mb-4">
                             <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
-                        </div>
+                        </div>                      
                         {blogs.map((item, index) => (
-                            <Blog post={item} index={index} deletePost={deletePost} key={item.id}/>
+                            <Blog post={item} index={index} deletePost={deletePost} editPost={editPost} key={item.id}/>
                         ))}
 
                     </div>
