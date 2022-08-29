@@ -3,7 +3,7 @@ const initialValues = {
     title: "",
     body: "",
   };
-const Form = ({blogs, setBlogs, blogById, resetblogById}) => {
+const Form = ({blogs, setBlogs, blogById, setblogById}) => {
     const [values, setValues] = useState(initialValues);
     const handleInputChange = (e) => {
             const { name, value } = e.target;
@@ -20,10 +20,6 @@ const Form = ({blogs, setBlogs, blogById, resetblogById}) => {
         }
       },[setValues, blogById])
  
-    const HendleresetblogById = () =>{
-        resetblogById();
-    }
-
     const handleSubmit = (e) => {
         e.preventDefault();
         if(blogById.id){
@@ -32,17 +28,14 @@ const Form = ({blogs, setBlogs, blogById, resetblogById}) => {
             newData[NewBlogsByid].title = values.title == "" ? blogById.title : values.title
             newData[NewBlogsByid].body = values.body == "" ? blogById.body : values.body
             setBlogs(newData);
-            HendleresetblogById()
-            setValues(initialValues)
+            setValues(initialValues)            
+            setblogById('')
         }  else{       
             const newData = [...blogs, {userId:99, id:blogs.length+1, title: values.title, body: values.body}];
             const sortDesc = [...newData];
             sortDesc.sort((a, b) => (a.id > b.id ? -1 : 1));
             setBlogs(sortDesc); 
             setValues(initialValues)
-
-            blogById.title = ''
-            blogById.body = ''
         }
     } 
 
