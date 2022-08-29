@@ -1,53 +1,64 @@
 import { useState, useEffect } from "react"
-const Form = ({blogs, setBlogs, blogById}) => {
-    const [id, setTd] = useState('');
-    const [blogByIdTitle, setblogByIdTitle] = useState('');
-    const [blogByIdBody, setblogByIdBody] = useState('');
+const initialValues = {
+    title: "",
+    body: "",
+  };
+const Form = ({blogs, setBlogs, blogById, resetblogById}) => {
+    const [values, setValues] = useState(initialValues);
+    const handleInputChange = (e) => {
+            const { name, value } = e.target;
+            setValues({
+            ...values,
+            [name]: value,
+            });             
+    } 
 
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    
+ 
+    const HendleresetblogById = () =>{
+        resetblogById();
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if(blogById.id){
             const newData = [...blogs]
             const NewBlogsByid = newData.findIndex((b => b.id == blogById.id));
-            newData[NewBlogsByid].title = title == "" ? blogById.title : title
-            newData[NewBlogsByid].body = description == "" ? blogById.body : description
+            newData[NewBlogsByid].title = values.title == "" ? blogById.title : values.title
+            newData[NewBlogsByid].body = values.body == "" ? blogById.body : values.body
             setBlogs(newData);
-            console.log(newData) 
-            setTitle('');
-            setDescription('');
-            setTd('')
-            // setDescription('');      
+            HendleresetblogById()
+            //setValues(initialValues)
         }  else{       
-            const newData = [...blogs, {userId:99, id:blogs.length+1, title: title, body: description}];
+            const newData = [...blogs, {userId:99, id:blogs.length+1, title: values.title, body: values.body}];
             const sortDesc = [...newData];
             sortDesc.sort((a, b) => (a.id > b.id ? -1 : 1));
             setBlogs(sortDesc); 
-            setTitle('');
-            setDescription('');
-            // setTd('')
-            console.log(title)
-            // setDescription('');       
+            setValues(initialValues)
+
+            blogById.title = ''
+            blogById.body = ''
         }
     } 
+
+    // useEffect(() => {
+    //     HendleresetblogById()
+    //   },[])
+
     return (
         <div className="container w-2/4 mx-auto mt-20">
             <form onSubmit={handleSubmit}>
                 <div className="mb-1">
-                    <input type="text" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Title..."  value={ id == '' ? blogById.id : id } onChange={(e) => setTd(e.target.value)}/>
+                    {/* <input type="text" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Title..."  value={ id == '' ? blogById.id : id } onChange={(e) => setTd(e.target.value)}/> */}
                     <label className="block text-2xl font-semibold p-1 text-gray-800" >
                         Titel
                     </label>
-                    <input type="text" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Title..."  value={ title == '' ? blogById.title : title } onChange={ (e) => setTitle(e.target.value)}/>
+                    <input type="text" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Title..." name="title"  value={ values.title == '' ? blogById.title : values.title } onChange={ handleInputChange}/>
                 </div>
                 <div className="mb-1">
                     <label className="block text-2xl p-1 font-semibold text-gray-800" >
                         Description
                     </label>
-                    <textarea  rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Description..."  value={ description == '' ? blogById.body : description } onChange={ (e) => setDescription(e.target.value)}></textarea>
+                    <textarea  rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Description..." name="body" value={values.body == '' ? blogById.body : values.body } onChange={handleInputChange}></textarea>
                 </div>
                 <div className="mt-6">
                     <div className="container w-2/4 mx-auto flex flex-row">

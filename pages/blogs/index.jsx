@@ -31,6 +31,10 @@ const Blogs = ({ data }) => {
         //setblogOfIndex(resultOfIndex)
     }
 
+    const resetblogById = () => {
+        setblogById({})
+    }
+
     // const savePost = () => {
     //     
     // }
@@ -39,7 +43,7 @@ const Blogs = ({ data }) => {
         <>
             <Layout>          
                 <section className="bg-white border-b py-8">
-                    <Form blogs={blogs} setBlogs={setBlogs} blogById={blogById} />
+                    <Form blogs={blogs} setBlogs={setBlogs} blogById={blogById} resetblogById={resetblogById} />
                     <div className="container mx-auto flex flex-wrap pb-8">
                         <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800 pt-5">
                             Article {jumlahPost}
