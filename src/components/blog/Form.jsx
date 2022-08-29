@@ -52,13 +52,13 @@ const Form = ({blogs, setBlogs, blogById, resetblogById}) => {
                     <label className="block text-2xl font-semibold p-1 text-gray-800" >
                         Titel
                     </label>
-                    <input type="text" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Title..." name="title"  value={ values.title == '' ? blogById.title : values.title } onChange={ handleInputChange}/>
+                    <input type="text" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Title..." name="title"  value={ values.title } onChange={ handleInputChange}/>
                 </div>
                 <div className="mb-1">
                     <label className="block text-2xl p-1 font-semibold text-gray-800" >
                         Description
                     </label>
-                    <textarea  rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Description..." name="body" value={values.body == '' ? blogById.body : values.body } onChange={handleInputChange}></textarea>
+                    <textarea  rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Description..." name="body" value={values.body  } onChange={handleInputChange}></textarea>
                 </div>
                 <div className="mt-6">
                     <div className="container w-2/4 mx-auto flex flex-row">
