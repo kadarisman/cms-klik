@@ -12,7 +12,13 @@ const Form = ({blogs, setBlogs, blogById, resetblogById}) => {
             [name]: value,
             });             
     } 
-
+    useEffect(() => {
+        if(blogById){
+            setValues({title: blogById.title, body : blogById.body})
+        }else{
+            setValues(initialValues)
+        }
+      },[setValues, blogById])
  
     const HendleresetblogById = () =>{
         resetblogById();
@@ -27,7 +33,7 @@ const Form = ({blogs, setBlogs, blogById, resetblogById}) => {
             newData[NewBlogsByid].body = values.body == "" ? blogById.body : values.body
             setBlogs(newData);
             HendleresetblogById()
-            //setValues(initialValues)
+            setValues(initialValues)
         }  else{       
             const newData = [...blogs, {userId:99, id:blogs.length+1, title: values.title, body: values.body}];
             const sortDesc = [...newData];
@@ -40,9 +46,7 @@ const Form = ({blogs, setBlogs, blogById, resetblogById}) => {
         }
     } 
 
-    // useEffect(() => {
-    //     HendleresetblogById()
-    //   },[])
+   
 
     return (
         <div className="container w-2/4 mx-auto mt-20">
