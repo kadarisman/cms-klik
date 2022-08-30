@@ -48,7 +48,7 @@ const Calc = () => {
             }
            
         }else{  
-             alert('kedua inputan tidak boleh kosong')
+             alert('kedua inputan tidak boleh kosong..')
         }
     }
 
