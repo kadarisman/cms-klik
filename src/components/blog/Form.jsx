@@ -7,10 +7,7 @@ const Form = ({blogs, setBlogs, blogById, setblogById}) => {
     const [values, setValues] = useState(initialValues);
     const handleInputChange = (e) => {
             const { name, value } = e.target;
-            setValues({
-            ...values,
-            [name]: value,
-            });             
+            setValues({...values, [name]: value, });             
     } 
     useEffect(() => {
         if(blogById){
