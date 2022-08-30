@@ -19,7 +19,7 @@ export default function Home() {
             Lorem ipsum dolor sit amet rrer
           </h3>
           <p className="text-gray-600 mb-8">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam atcsdmnasdnsdfmn
             ipsum eu nunc commodo posuere et sit amet ligula.
             <br />
             <br />
