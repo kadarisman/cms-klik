@@ -16,7 +16,7 @@ export default function Home() {
       <div className="flex flex-wrap">
         <div className="w-5/6 sm:w-1/2 p-6">
           <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
-            Lorem ipsum dolor sit amet
+            Lorem ipsum dolor sit amet rrer
           </h3>
           <p className="text-gray-600 mb-8">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
