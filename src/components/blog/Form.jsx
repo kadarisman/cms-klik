@@ -1,48 +1,47 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
+import { BlogContext } from "@/components/context/BlogContext";
 const initialValues = {
     title: "",
     body: "",
   };
-const Form = ({blogs, setBlogs, blogById, setblogById}) => {
+const Form = () => {
+    const blogsData = useContext(BlogContext);
     const [values, setValues] = useState(initialValues);
     const handleInputChange = (e) => {
             const { name, value } = e.target;
             setValues({...values, [name]: value, });             
     } 
     useEffect(() => {
-        if(blogById){
-            setValues({title: blogById.title, body : blogById.body})
+        if(blogsData.blogById){
+            setValues({title: blogsData.blogById.title, body : blogsData.blogById.body})
         }else{
             setValues(initialValues)
         }
-      },[setValues, blogById])
+      },[setValues, blogsData.blogById])
  
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(blogById.id){
-            const newData = [...blogs]
-            const NewBlogsByid = newData.findIndex((b => b.id == blogById.id));
-            newData[NewBlogsByid].title = values.title == "" ? blogById.title : values.title
-            newData[NewBlogsByid].body = values.body == "" ? blogById.body : values.body
-            setBlogs(newData);
+        if(blogsData.blogById.id){
+            const newData = [...blogsData.blogs]
+            const NewBlogsByid = newData.findIndex((b => b.id == blogsData.blogById.id));
+            newData[NewBlogsByid].title = values.title == "" ? blogsData.blogById.title : values.title
+            newData[NewBlogsByid].body = values.body == "" ? blogsData.blogById.body : values.body
+            blogsData.setBlogs(newData);
             setValues(initialValues)            
-            setblogById('')
+            blogsData.setblogById('')
         }  else{       
-            const newData = [...blogs, {userId:99, id:blogs.length+1, title: values.title, body: values.body}];
+            const newData = [...blogsData.blogs, {userId:99, id:blogsData.blogs.length+1, title: values.title, body: values.body}];
             const sortDesc = [...newData];
             sortDesc.sort((a, b) => (a.id > b.id ? -1 : 1));
-            setBlogs(sortDesc); 
+            blogsData.setBlogs(sortDesc); 
             setValues(initialValues)
         }
-    } 
-
-   
+    }    
 
     return (
         <div className="container w-2/4 mx-auto mt-20">
             <form onSubmit={handleSubmit}>
                 <div className="mb-1">
-                    {/* <input type="text" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Title..."  value={ id == '' ? blogById.id : id } onChange={(e) => setTd(e.target.value)}/> */}
                     <label className="block text-2xl font-semibold p-1 text-gray-800" >
                         Titel
                     </label>
