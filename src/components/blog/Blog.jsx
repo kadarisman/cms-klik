@@ -15,13 +15,8 @@ const Blog = () => {
     
     const handleEdit = (e) =>{
         const id = e.id;
-        // console.log(id)
-        // props.editPost(id)
         const result = blogsData.blogs.find(b => b.id == id)
-        //const resultOfIndex = blogs.findIndex(b => b.id == id)
-        blogsData.setblogById(result)        
-        // console.log(blogById)
-        //setblogOfIndex(resultOfIndex)
+        blogsData.setblogById(result)  
     }
 
     return (
