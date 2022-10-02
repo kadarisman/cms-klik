@@ -9,6 +9,7 @@ const Blogs = () => {
                 <section className="bg-white border-b py-8">  
                     <Form/>                 
                     <Blog />
+                    
                 </section>              
             </Layout>
         </BlogProvider>
